@@ -70,3 +70,66 @@ header nav a img {
     transform: translateX(0px) translateY(0px);
   }
 }
+form {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+}
+form div {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+form button {
+  padding: 10px 15px;
+  background-color: #575859;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+form button::before {
+  content: "+ ";
+  font-weight: bold;
+}
+form input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+section {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+}
+section h1,
+section h3 {
+  margin-top: 0;
+  text-align: center;
+}
+section ul {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 0;
+  list-style-type: none;
+}
+section ul li {
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: larger;
+  font-weight: bold;
+}
+section ul li button {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}

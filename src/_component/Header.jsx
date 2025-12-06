@@ -1,4 +1,3 @@
-import React from "react";
 import chefRobot from "../assets/chef-robot.png";
 
 export default function Header() {
@@ -9,7 +8,7 @@ export default function Header() {
           <img
             src={chefRobot}
             alt="A robot chef icon as the logo"
-            srcset={chefRobot}
+            srcSet={chefRobot}
           />
           <h1>Chef Claude</h1>
         </a>
