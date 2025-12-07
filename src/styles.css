@@ -4,7 +4,7 @@ body {
   background-color: #f8f9fa;
 }
 header {
-  background-color: #575859;
+  background-color: #5a3e2b;
   padding: 10px;
   text-align: center;
   font-weight: bold;
@@ -17,13 +17,11 @@ header nav a {
   justify-content: center;
   align-items: center;
 }
-header nav a:hover {
-  text-decoration: underline;
-}
+
 header h1 {
   margin: 0;
   color: #17191a;
-  font-size: larger;
+  font-size: x-large;
 }
 header nav a img {
   width: 2rem;
@@ -72,7 +70,7 @@ header nav a img {
 }
 form {
   max-width: 700px;
-  margin: 20px auto;
+  margin: 10px auto;
   padding: 20px;
 }
 form div {
@@ -83,12 +81,15 @@ form div {
 }
 form button {
   padding: 10px 15px;
-  background-color: #575859;
+  background-color: #5a3e2b;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+}
+form button:hover {
+  background-color: #7a4b2f;
 }
 form button::before {
   content: "+ ";
@@ -103,7 +104,7 @@ form input[type="text"] {
 }
 section {
   max-width: 700px;
-  margin: 20px auto;
+  margin: auto;
   padding: 20px;
 }
 section h1,
@@ -113,11 +114,11 @@ section h3 {
 }
 section ul {
   max-width: 700px;
-  margin: 20px auto;
+  margin: 10px auto;
   padding: 0;
   list-style-type: none;
 }
-section ul li {
+section ul .ingredient-list {
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
@@ -132,4 +133,137 @@ section ul li button {
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
+}
+section ul li button:hover {
+  background-color: #c82333;
+}
+.card-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.empty-card,
+.card {
+  max-width: 700px;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #ffffff;
+  text-align: center;
+}
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.card-content {
+  text-align: left;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+.card-description {
+  font-size: 16px;
+  margin: 0;
+}
+.card-button {
+  padding: 10px 20px;
+  background-color: #5a3e2b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.card-button:hover {
+  background-color: #7a4b2f;
+}
+.recipe-button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.recipe-button {
+  padding: 10px;
+  background-color: #5a3e2b;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.recipe-button:hover {
+  background-color: #7a4b2f;
+}
+.recipe-article {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fffaf5;
+  border: 1px solid #e0d6c9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.recipe-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #5a3e2b;
+}
+
+.recipe-description {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+.section-heading {
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #7a4b2f;
+  border-bottom: 2px solid #e0d6c9;
+  padding-bottom: 0.25rem;
+}
+
+.ingredient-list,
+.instruction-list,
+.suggestion-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.ingredient-item,
+.instruction-step,
+.suggestion-item {
+  margin: 0.4rem 0;
+  line-height: 1.4;
+}
+.ingredient-item,
+.suggestion-item {
+  font-size: larg;
+  font-weight: bold;
+}
+
+.ingredient-item::before {
+  content: "🍴 ";
+}
+
+.instruction-step::marker {
+  color: #7a4b2f;
+  font-weight: bold;
+}
+
+.suggestion-item::before {
+  content: "💡 ";
 }
