@@ -5,6 +5,7 @@ import IngredientList from "./_component/IngredientList";
 import GetRecipeCard from "./_component/GetRecipeCard";
 import { RecipeArticle } from "./_component/RecipeArticle";
 import { GetRecipe } from "./lib/GetRecipe";
+import Footer from "./_component/Footer";
 
 function App() {
   const [ingredients, setIngredients] = React.useState([]);
@@ -85,6 +86,7 @@ function App() {
           </section>
         )}
       </main>
+      <Footer />
     </>
   );
 }

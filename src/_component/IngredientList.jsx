@@ -2,11 +2,10 @@ import React from "react";
 import { capitalize } from "../lib/capitalize.js";
 
 export default function IngredientList({ ingredients, removeIngredient }) {
-  const reversedIngredients = [...ingredients].reverse();
   return (
     <section>
       <h1>Ingredients</h1>
-      {reversedIngredients.length === 0 ? (
+      {ingredients.length === 0 ? (
         <div className="empty-card">
           <h3 className="empty-card-title">No ingredients added yet!</h3>
           <p className="empty-card-description">
@@ -15,7 +14,7 @@ export default function IngredientList({ ingredients, removeIngredient }) {
         </div>
       ) : (
         <ul>
-          {reversedIngredients.map((ingredient, index) => (
+          {ingredients.map((ingredient, index) => (
             <li key={index} className="ingredient-list">
               <p>{capitalize(ingredient)}</p>
               <button onClick={() => removeIngredient(index)}>Remove</button>
