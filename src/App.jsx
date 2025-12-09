@@ -4,49 +4,18 @@ import IngredientForm from "./_component/IngredientForm";
 import IngredientList from "./_component/IngredientList";
 import GetRecipeCard from "./_component/GetRecipeCard";
 import { RecipeArticle } from "./_component/RecipeArticle";
-
-const Recipes = [
-  {
-    recipeTitle: "Fluffy Pancakes",
-    description: "A quick breakfast using eggs, flour, butter, and sugar.",
-    ingredients: ["Eggs", "Flour", "Butter", "Sugar"],
-    instructions: [
-      "Whisk eggs and sugar together until light.",
-      "Add flour gradually and mix until smooth.",
-      "Melt butter in a pan and pour in batter.",
-      "Cook until golden brown on both sides.",
-      "Serve warm with syrup or fruit.",
-    ],
-    suggestions: [
-      "Top with honey or fresh berries",
-      "Add a pinch of cinnamon for flavor",
-    ],
-  },
-  {
-    recipeTitle: "Butter Cookies",
-    description: "Crispy cookies made with butter, sugar, and flour.",
-    ingredients: ["Butter", "Sugar", "Flour", "Eggs"],
-    instructions: [
-      "Cream butter and sugar together.",
-      "Add eggs and mix well.",
-      "Stir in flour until dough forms.",
-      "Shape into cookies and bake at 180°C for 12 minutes.",
-    ],
-    suggestions: [
-      "Sprinkle with powdered sugar",
-      "Add chocolate chips for variation",
-    ],
-  },
-];
+import { GetRecipe } from "./lib/GetRecipe";
 
 function App() {
   const [ingredients, setIngredients] = React.useState([
-    "flour",
-    "sugar",
-    "butter",
-    "eggs",
+    "chicken",
+    "rice",
+    "broccoli",
+    "garlic",
+    "soy sauce",
   ]);
   const [selectedRecipe, setSelectedRecipe] = React.useState(null);
+  const [recipes, setRecipes] = React.useState(null);
 
   const removeIngredient = (indexToRemove) => {
     setIngredients((prevIngredients) =>
@@ -70,8 +39,18 @@ function App() {
     setSelectedRecipe(recipeTitle);
   };
 
-  const handleGetRecipes = () => {
-    setSelectedRecipe(Recipes[0].recipeTitle);
+  const handleGetRecipes = async () => {
+    const data = await GetRecipe(ingredients);
+    console.log("Generated Recipes:", data);
+    if (!data || data.length === 0) {
+      alert(
+        "No recipes were generated. Please try again with different ingredients."
+      );
+      return;
+    }
+    setRecipes(data);
+    setSelectedRecipe(data[0].recipeTitle);
+    setTimeout(() => (window.location.href = "#recipe"), 3000);
   };
 
   return (
@@ -88,20 +67,24 @@ function App() {
         )}
         {selectedRecipe !== null && (
           <section>
-            <h1>Recipes</h1>
+            <h1 id="recipe">Recipes</h1>
             <div className="recipe-button-container">
-              {Recipes.map((recipe, idx) => (
+              {recipes.map((recipe, idx) => (
                 <button
                   key={idx}
                   onClick={() => SwitchRecipe(recipe.recipeTitle)}
-                  className="recipe-button"
+                  className={`${
+                    selectedRecipe === recipe.recipeTitle
+                      ? "recipe-button-selected"
+                      : "recipe-button"
+                  }`}
                 >
                   {recipe.recipeTitle}
                 </button>
               ))}
             </div>
             <RecipeArticle
-              recipe={Recipes.find(
+              recipe={recipes.find(
                 (recipe) => recipe.recipeTitle === selectedRecipe
               )}
             />
