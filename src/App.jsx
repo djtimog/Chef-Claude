@@ -7,13 +7,7 @@ import { RecipeArticle } from "./_component/RecipeArticle";
 import { GetRecipe } from "./lib/GetRecipe";
 
 function App() {
-  const [ingredients, setIngredients] = React.useState([
-    "chicken",
-    "rice",
-    "broccoli",
-    "garlic",
-    "soy sauce",
-  ]);
+  const [ingredients, setIngredients] = React.useState([]);
   const [selectedRecipe, setSelectedRecipe] = React.useState(null);
   const [recipes, setRecipes] = React.useState(null);
 

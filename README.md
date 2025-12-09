@@ -1,16 +1,54 @@
-# React + Vite
+# Chef Claude - Recipe Generator App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Chef Claude Logo](./public/logo.png) <!-- optional -->
 
-Currently, two official plugins are available:
+Chef Claude is a modern, interactive recipe generator web app built with **Vite**, **React**, and **Google Gemini AI**. Users can input ingredients and instantly generate diverse recipes in a structured JSON format.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Table of Contents
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [Demo](#demo)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Environment Variables](#environment-variables)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Demo
+
+A live demo of the app can be accessed here:  
+[Your Live Demo Link](https://your-demo-link.com)
+
+---
+
+## Features
+
+- Generate up to 3 recipes based on user-provided ingredients
+- Recipes include title, description, ingredients, step-by-step instructions, and serving suggestions
+- JSON-only response for easy parsing
+- Error handling for invalid or excessive API requests
+- Responsive design built with React
+
+---
+
+## Tech Stack
+
+- **Frontend:** React, Vite, Tailwind CSS
+- **AI Integration:** Google Gemini AI (`@google/genai`)
+- **JavaScript:** Modern ES6+ syntax
+- **Version Control:** Git
+
+---
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/chef-claude.git
+cd chef-claude
