@@ -45,7 +45,7 @@ function App() {
     }
     setRecipes(data);
     setSelectedRecipe(data[0].recipeTitle);
-    setTimeout(() => (window.location.href = "#recipe"), 3000);
+    setTimeout(() => (window.location.href = "#recipe"), 1500);
   };
 
   return (
