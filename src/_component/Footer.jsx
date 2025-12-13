@@ -6,7 +6,7 @@ export default function Footer() {
         <strong> Christian Ogunleye</strong>
       </p>
       <p className="dedication">
-        Dedicated to <em>The Love of My Life (Ayinke)</em>
+        Dedicated to <em>Once The Love of My Life (Ayinke)</em>
       </p>
     </footer>
   );
