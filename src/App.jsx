@@ -12,12 +12,17 @@ function App() {
   const [selectedRecipe, setSelectedRecipe] = React.useState(null);
   const [recipes, setRecipes] = React.useState(null);
   const recipeSection = React.useRef(null);
+  const [disableButton, setDisableButton] = React.useState(false);
 
   React.useEffect(() => {
     if (recipes && recipeSection.current) {
       recipeSection.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [selectedRecipe]);
+
+  React.useEffect(() => {
+    setDisableButton(false);
+  }, [ingredients]);
 
   const removeIngredient = (indexToRemove) => {
     setIngredients((prevIngredients) =>
@@ -42,6 +47,7 @@ function App() {
   };
 
   const handleGetRecipes = async () => {
+    setDisableButton(true);
     const data = await GetRecipe(ingredients);
     console.log("Generated Recipes:", data);
     if (!data || data.length === 0) {
@@ -65,7 +71,10 @@ function App() {
           removeIngredient={removeIngredient}
         />
         {ingredients.length > 3 && (
-          <GetRecipeCard handleClick={handleGetRecipes} />
+          <GetRecipeCard
+            handleClick={handleGetRecipes}
+            disable={disableButton}
+          />
         )}
         {selectedRecipe !== null && (
           <section ref={recipeSection}>

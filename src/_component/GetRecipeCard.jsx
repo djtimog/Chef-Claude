@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function GetRecipeCard({ handleClick }) {
+export default function GetRecipeCard({ handleClick, disable }) {
   return (
     <div className="card-container">
       <div className="card">
@@ -11,7 +11,11 @@ export default function GetRecipeCard({ handleClick }) {
             recipes🍲 you can make.
           </p>
         </div>
-        <button onClick={handleClick} className="card-button">
+        <button
+          disabled={disable}
+          onClick={handleClick}
+          className="card-button"
+        >
           Ask AI
         </button>
       </div>
