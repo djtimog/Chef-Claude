@@ -11,6 +11,13 @@ function App() {
   const [ingredients, setIngredients] = React.useState([]);
   const [selectedRecipe, setSelectedRecipe] = React.useState(null);
   const [recipes, setRecipes] = React.useState(null);
+  const recipeSection = React.useRef(null);
+
+  React.useEffect(() => {
+    if (recipes && recipeSection.current) {
+      recipeSection.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [selectedRecipe]);
 
   const removeIngredient = (indexToRemove) => {
     setIngredients((prevIngredients) =>
@@ -45,7 +52,7 @@ function App() {
     }
     setRecipes(data);
     setSelectedRecipe(data[0].recipeTitle);
-    setTimeout(() => (window.location.href = "#recipe"), 3000);
+    // setTimeout(() => (window.location.href = "#recipe"), 3000);
   };
 
   return (
@@ -61,7 +68,7 @@ function App() {
           <GetRecipeCard handleClick={handleGetRecipes} />
         )}
         {selectedRecipe !== null && (
-          <section>
+          <section ref={recipeSection}>
             <h1 id="recipe">Recipes</h1>
             <div className="recipe-button-container">
               {recipes.map((recipe, idx) => (
