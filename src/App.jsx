@@ -26,14 +26,14 @@ function App() {
 
   const removeIngredient = (indexToRemove) => {
     setIngredients((prevIngredients) =>
-      prevIngredients.filter((_, index) => index !== indexToRemove)
+      prevIngredients.filter((_, index) => index !== indexToRemove),
     );
   };
 
   const addIngredient = (newIngredient) => {
     const isNewIngredientUnique = !ingredients.some(
       (ingredient) =>
-        ingredient.toLowerCase() === newIngredient.trim().toLowerCase()
+        ingredient.toLowerCase() === newIngredient.trim().toLowerCase(),
     );
     if (!isNewIngredientUnique) {
       alert(`${newIngredient} is already in the ingredient list.`);
@@ -48,17 +48,31 @@ function App() {
 
   const handleGetRecipes = async () => {
     setDisableButton(true);
-    const data = await GetRecipe(ingredients);
-    console.log("Generated Recipes:", data);
-    if (!data || data.length === 0) {
-      alert(
-        "No recipes were generated. Please try again with different ingredients."
-      );
-      return;
+
+    try {
+      const data = await GetRecipe(ingredients);
+
+      if (!data || data.length === 0) {
+        alert("No recipes were generated. Please try again.");
+        setDisableButton(false);
+        return;
+      }
+
+      setRecipes(data);
+      setSelectedRecipe(data[0].recipeTitle);
+    } catch (error) {
+      console.error("Recipe generation failed:", error);
+
+      if (error.message === "RATE_LIMIT") {
+        alert("Too many requests — please wait a minute and try again.");
+      } else if (error.message === "PARSE_ERROR") {
+        alert("AI returned an unexpected response. Please try again.");
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+
+      setDisableButton(false);
     }
-    setRecipes(data);
-    setSelectedRecipe(data[0].recipeTitle);
-    // setTimeout(() => (window.location.href = "#recipe"), 3000);
   };
 
   return (
@@ -96,7 +110,7 @@ function App() {
             </div>
             <RecipeArticle
               recipe={recipes.find(
-                (recipe) => recipe.recipeTitle === selectedRecipe
+                (recipe) => recipe.recipeTitle === selectedRecipe,
               )}
             />
           </section>

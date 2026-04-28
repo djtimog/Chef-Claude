@@ -27,22 +27,41 @@ export async function GetRecipe(ingredients) {
       - Return JSON ONLY. No explanation, no markdown, no text.
 `;
 
-  const result = await ai.models.generateContent({
-    model: "gemini-2.0-flash-001",
-    contents: [
-      {
-        role: "user",
-        parts: [{ text: prompt }],
-      },
-    ],
-  });
+  try {
+    const result = await ai.models.generateContent({
+      model: "gemini-2.0-flash-001",
+      contents: [
+        {
+          role: "user",
+          parts: [{ text: prompt }],
+        },
+      ],
+    });
 
-  let text = result.text;
-  text = text
-    .replace(/```json/g, "")
-    .replace(/```/g, "")
-    .trim();
-  console.log(text);
+    let text = result.text;
+    text = text
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim();
+    console.log(text);
 
-  return JSON.parse(text);
+    return JSON.parse(text);
+  } catch (error) {
+    console.error("GetRecipe failed:", error);
+
+    // Re-throw with a cleaner message so App.jsx can handle it
+    if (
+      error?.status === 429 ||
+      error?.message?.includes("429") ||
+      error?.message?.includes("RESOURCE_EXHAUSTED")
+    ) {
+      throw new Error("RATE_LIMIT");
+    }
+
+    if (error instanceof SyntaxError) {
+      throw new Error("PARSE_ERROR");
+    }
+
+    throw new Error("API_ERROR");
+  }
 }
