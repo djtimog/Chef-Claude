@@ -18,7 +18,7 @@ function App() {
     if (recipes && recipeSection.current) {
       recipeSection.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [selectedRecipe]);
+  }, [selectedRecipe, recipes]);
 
   React.useEffect(() => {
     setDisableButton(false);
