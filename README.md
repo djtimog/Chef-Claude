@@ -4,25 +4,14 @@
 
 Chef Claude is a modern, interactive recipe generator web app built with **Vite**, **React**, and **Google Gemini AI**. Users can input ingredients and instantly generate diverse recipes in a structured JSON format.
 
----
 
-## Table of Contents
-
-- [Demo](#demo)
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Environment Variables](#environment-variables)
-- [Contributing](#contributing)
-- [License](#license)
-
----
 
 ## Demo
 
-A live demo of the app can be accessed here:  
-[Your Live Demo Link](https://your-demo-link.com)
+A live demo of the app can be accessed here:  [Live](https://chef-claude-one.vercel.app) 
+
+
+
 
 ---
 
