@@ -39,5 +39,5 @@ A live demo of the app can be accessed here:  [Live](https://chef-claude-one.ver
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/chef-claude.git
+git clone https://github.com/djtimog/chef-claude.git
 cd chef-claude
